@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Paciência Klondike</title>
+        <script type="text/javascript" src="core/Dialog.js"></script>
+        <script type="text/javascript" src="core/loginrequest.js"></script>
+        <link rel="stylesheet" type="text/css" href="stylesheet/estilos.css"></link>
+    </h:head>
+    <h:body styleClass="fundologin">
+
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="110" class="head">
+                <h:panelGroup layout="inline">Paciência Klondike</h:panelGroup>
+                <h:panelGroup layout="inline" class="logger"><p:button href="http://www.facebook.com" value="Like!" id="likebutton"/></h:panelGroup>
+            </p:layoutUnit>
+            <p:layoutUnit position="south" size="70" class="ft gridFoot">
+                <hr></hr>
+                <h:panelGroup layout="inline" class="foot">Klondike</h:panelGroup>
+                <h:panelGroup layout="inline" class="footright"><img src="cardsets/playing-card.png" alt="cards" style="width: 20%; height: 20%;"></img></h:panelGroup>
+            </p:layoutUnit>
+            <p:layoutUnit position="center">
+                <h:form>
+                    <p:dialog header="Login" widgetVar="dlg1" height="150" width="370" closable="false" resizable="false" showEffect="puff" class="dialogfundo">
+                        <p:growl id="growl" sticky="true" showDetail="true" life="5" />
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputLabel for="username" value="Username:" />
+                            <p:inputText id="username" value="#{userLoginView.username}" required="true" requiredMessage="Login inválido" label="username" />
+
+                            <h:outputLabel for="password" value="Password:" />
+                            <p:password id="password" value="#{userLoginView.password}" required="true" requiredMessage="Senha inválida" label="password" />
+
+                            <f:facet name="footer">
+                                <p:commandButton value="Login" update="growl" actionListener="#{userLoginView.login}"
+                                                 oncomplete="handleLoginRequest(xhr, status, args)" class="buttonslogin">
+                                    <f:param name="user" value="#{userLoginView.username}"/>
+                                </p:commandButton>
+                                <p:button href="#" value="SignUp!" onclick="PF('dlgsignup').show()" class="buttonslogin signup"/>
+                                <p:button href="#" value="Ajuda" class="lostaccount" onclick="PF('dlghelp').show();"/>
+                            </f:facet>  
+                        </h:panelGrid>
+                    </p:dialog>
+                </h:form>
+
+                <h:form>
+                    <p:dialog header="Cadastro" widgetVar="dlgsignup" height="200" width="370" closable="true" resizable="false" showEffect="puff" class="dialogfundo">               
+                        <p:growl id="growl" sticky="true" showDetail="true" life="5" />
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputLabel for="username" value="Username:" />
+                            <p:inputText id="username" value="#{userSignupView.username}" required="true" requiredMessage="Login inválido" label="username" />
+                            <h:outputLabel for="email" value="Email:" />
+                            <p:inputText id="email" value="#{userSignupView.email}" required="true" requiredMessage="Email inválido" label="email" />
+                            <h:outputLabel for="password" value="Password:" />
+                            <p:password id="password" value="#{userSignupView.password}" required="true" requiredMessage="Senha inválida" label="password" />
+                            <f:facet name="footer">
+                                <p:commandButton value="Cadastrar" update="growl" actionListener="#{userSignupView.cadastrar}" class="buttonslogin">
+                                </p:commandButton>
+                                <p:button href="#" value="Fechar" onclick="SignupClose()" class="buttonslogin"/>
+                            </f:facet>
+                        </h:panelGrid>
+                    </p:dialog>
+                </h:form>
+
+                <p:dialog header="Recuperação de senha" widgetVar="dlgrecover" height="100" width="430" closable="true" resizable="false" showEffect="puff" class="dialogfundo">               
+
+                </p:dialog>
+
+                <p:dialog header="Ajuda" widgetVar="dlghelp" height="500" width="700" closable="true" resizable="false" showEffect="puff" class="dialogfundo ajuda">
+                    <h:panelGroup layout="block">
+                        <h1>Primeiro Acesso</h1>
+                        Logo ao abrir o nosso sistema, estara frente a frente com a interface de Tela de Login.
+                        Para acessar o Paciência Klondike, é preciso se cadastrar:
+                        <ul>
+                            <li>Primeiro, caso não esteja na tela abaixo, acesse nosso sistema.</li>
+                            <li>Depois, clique no botão Sign Up ao lado do botão Login no centro da tela, 
+                                apontado na imagem abaixo, 
+                                este botão ira redireciona­lo a tela de Cadastro.</li>
+                        </ul>
+                    </h:panelGroup>
+                    <h:panelGroup layout="block">
+                        <h3>Cadastro</h3>
+                        Ao clicar no botão você sera redirecionado a esta tela, preencha os campos, 
+                        leia nossos Termos de uso e se concordar marque a
+                        caixa de opção e clique em Confirm para finalizar seu cadastro.
+                    </h:panelGroup>
+                    <h:panelGroup layout="block">
+                        <h3>Primeiro Login</h3>
+                        Após se cadastrar e anotar
+                        seu usuario e senha você
+                        poderá preecher os campos
+                        de Usuario e Senha da tela
+                        inicial de login e clicar em
+                        Login, e se preencher os
+                        dados corretamente será
+                        redirecionado para a tela de
+                        menu principal do jogo onde
+                        poderá jogar, ver suas
+                        estatísticas e compara seu
+                        escore com outros jogadores
+                        vendo o Ranking do PK
+                        Online.
+                        
+                    </h:panelGroup>
+                    <br/>
+                    <br/>
+                    <br/>
+                </p:dialog>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>
+

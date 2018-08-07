@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="game">
+                <meta content='text/xhtml; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Paciencia Klondike</title>
+            </f:facet>
+            <script type="text/javascript" src="core/cardgamecore.js"></script>
+            <script type="text/javascript" src="core/solitaire.js"></script>
+            <script type="text/javascript" src="core/solitaireanimations.js"></script>
+            <script type="text/javascript" src="core/listCollapse.js"></script>
+            <script type="text/javascript" src="core/loader.js"></script>
+            <script type="text/javascript" src="core/cronometro.js"></script>
+            <link rel="stylesheet" type="text/css" href="stylesheet/estilos.css"></link>
+        </h:head>
+        <h:body styleClass="fundo">
+            <p:layout id="pageLayout" class="grid">
+                <p:layoutUnit position="north" size="110" class="head">
+                    <h:panelGroup layout="inline">Paciência Klondike</h:panelGroup>
+                    <h:panelGroup layout="inline" class="logger">Logado como: <p:outputLabel value="#{userLoginView.requestUser()}" id="user"/> 
+                        <p:button href="#" class="logout" value="Logout" icon="ui-icon-extlink" onclick="PF('dlgexit').show()"/>
+                    </h:panelGroup>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="250" header="Menu" collapsible="true" effect="drop" class="gridLeft">
+                    <p:menu>
+                        <p:submenu label="Opções">
+                            <p:menuitem value="Novo Jogo" url="#" onclick="PF('dlgnewgame').show();"/>
+                            <p:menuitem value="Opções de cartas" url="#" id="opcao"/>
+                            <p:menuitem value="Estatísticas" url="#" onclick="PF('dlgscore').show();"/>
+                            <p:menuitem value="Sobre" url="#" onclick="PF('dlghelp').show();"/>
+                        </p:submenu>
+                    </p:menu>
+                    <h:panelGroup layout="block">
+                        <br/>
+                        Tempo: <span id="hora">00:</span><span id="minuto">00:</span><span id="segundo">00</span><br/>
+                    </h:panelGroup>
+                </p:layoutUnit>
+                <p:layoutUnit position="center" resizable="true">
+                    <h:panelGroup layout="block" id="jogo" />
+                    <h:form>
+                        <p:dialog header="Vencedor!" widgetVar="dlgwin" height="130" width="300" closable="false" resizable="false" showEffect="puff" class="dialogfundo">
+                            <h:panelGroup layout="block">Parabéns você ganhou!</h:panelGroup>
+                            <br/>
+                            <h:panelGroup layout="block">Pontuacao:<span id="pontos">0</span></h:panelGroup>
+                            <br />
+                            <h:panelGroup layout="block">Tempo:<span id="tempo">0</span></h:panelGroup>
+                            <br />
+                            <h:inputHidden id="hiddenpoints" value="#{gameWinView.pontos}"/>
+                            <h:inputHidden id="hiddentime" value="#{gameWinView.tempo}"/>
+                            <f:facet name="footer">
+                                <p:commandButton value="Ok" actionListener="#{gameWinView.insertCoin}" onclick="WinClose()">
+                                </p:commandButton>
+                                <script>
+                                    function WinClose() {
+                                        document.getElementById('j_idt22:hiddenpoints').value = pontuacao;
+                                        document.getElementById('j_idt22:hiddentime').value = segundos;
+                                        PF('dlgwin').hide();
+                                    }
+                                </script>
+                            </f:facet>
+                        </p:dialog>
+                    </h:form>
+                    <p:dialog header="Novo Jogo" widgetVar="dlgnewgame" height="130" width="400" closable="true" resizable="false" showEffect="puff" class="dialogfundo">
+                        <br/>
+                        <h:panelGroup layout="block">Deseja começar um novo jogo?</h:panelGroup>
+                        <br/>
+                        <p:button value="Novo Jogo" href="#" id="newgame" class="newgamebuttons"/>
+                        <p:button value="Cancelar" href="#" id="cancelar" class="newgamebuttons"/>
+                    </p:dialog>
+                    <p:dialog header="Sobre" widgetVar="dlghelp" height="500" width="900" closable="true" resizable="false" showEffect="puff" class="dialogfundo">
+                        <h1>COMO JOGAR</h1>
+
+                        <h3>BASÍCO DO JOGO</h3>
+
+                        Paciência é um jogo de cartas para um só jogador. A variante de Paciência usada sera a conhecida especificamente por
+                        "Klondike".
+
+                        <h3>ESTRUTURA DO CAMPO</h3>
+
+                        Utiliza­se um baralho completo, 52 cartas. Deve­se fazer um monte com 7 cartas e colocá­lo virado para baixo na mesa, depois outro
+                        com 6 e assim sucessivamente até um monte de apenas 1 carta. O restante das cartas é o monte de compra. Devem ser reservados 4
+                        espaços para a fase final do jogo. Vira­se a primeira carta de cada monte, exceto o de compra, totalizando sete cartas reveladas.
+
+                        <h3>MOVIMENTOS</h3>
+
+                        Pode­se movimentar qualquer
+                        carta que esteja aberta nas
+                        colunas principais. Para
+                        movimentar as cartas, é
+                        necessário alternar as cores, e
+                        respeitar a ordem da maior para a
+                        menor. Quando uma coluna
+                        estiver vazia, é permitido
+                        começar a montá­la
+                        colocando um rei (K) de
+                        qualquer naipe em sua casa.
+
+                        <h3>COMO TERMINAR OJOGO</h3>
+
+                        O jogo acaba quando todas as
+                        quatro pilhas na região
+                        superior estiverem completas,
+                        do Ás ao Rei.
+                        <br/>
+                        <br/>
+                        <br/>
+                    </p:dialog>
+                    <p:dialog header="Estatísticas" widgetVar="dlgscore" height="500" width="800" closable="true" resizable="false" showEffect="puff" class="dialogfundo">
+                        <p:panel header="Escore Pessoal">
+                            <p:dataTable var="Usuario" value="#{partidaDAO.userPartida}" paginator="false" >
+                                <p:column headerText="Nome">
+                                    <h:outputText value="#{Usuario.usuario.nome}"/>
+                                </p:column>
+                                <p:column headerText="Pontos">
+                                    <h:outputText value="#{Usuario.pontos}"/>
+                                </p:column>
+                                <p:column headerText="Tempo em segundos">
+                                    <h:outputText value="#{Usuario.tempo}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </p:panel>
+                        <f:facet name="footer">
+                            <p:button href="#" value="Ranking Geral" onclick="PF('dlgrank').show()"/>
+                        </f:facet>
+                    </p:dialog>
+                    <p:dialog header="Ranking Geral" widgetVar="dlgrank" height="500" width="800" closable="true" resizable="false" showEffect="puff" class="dialogfundo">
+                        <p:panel header="Escore Global">
+                            <p:dataTable var="Global" value="#{partidaDAO.partida}" paginator="false" rowIndexVar="index">
+                                <p:column headerText="Posição">
+                                    <h:outputText value="#{index + 1}"/>
+                                </p:column>
+                                <p:column headerText="Nome">
+                                    <h:outputText value="#{Global.usuario.nome}"/>
+                                </p:column>
+                                <p:column headerText="Pontos" >
+                                    <h:outputText value="#{Global.pontos}"/>
+                                </p:column>
+                                <p:column headerText="Tempo em segundos">
+                                    <h:outputText value="#{Global.tempo}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </p:panel>
+                    </p:dialog>
+                    <p:dialog header="Logout" widgetVar="dlgexit" height="100" width="300" closable="true" resizable="false" showEffect="puff" class="dialogfundo">
+                        <h:panelGroup class="foottext">Deseja Sair?</h:panelGroup>
+                        <br/>
+                        <br/>
+                        <p:button outcome="index" class="logout" value="Logout" icon="ui-icon-extlink" onclick="#{userLoginView.endSession()}"/>
+                        <p:button value="Cancelar" href="#" onclick="PF('dlgexit').hide()"/>
+                    </p:dialog>
+                </p:layoutUnit>
+                <p:layoutUnit position="south" size="70" class="ft gridFoot">
+                    <hr></hr>
+                    <h:panelGroup layout="inline" class="foot">Klondike</h:panelGroup>
+                    <h:panelGroup layout="inline" class="footright"><img src="cardsets/playing-card.png" alt="cards" style="width: 20%; height: 20%;"></img></h:panelGroup>
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>

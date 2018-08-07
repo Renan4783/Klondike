@@ -1,0 +1,285 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16/07/2016, 19:11:04
+    Author     : Renan
+*/
+
+/*Estilização de fundo do jogo na pagina game.xhtml*/
+.fundo{
+    background: darkgreen;
+    background-image: -webkit-linear-gradient(top,#2b542c 0,transparent 100%);
+    background-image: -o-linear-gradient(top,#2b542c 0,transparent 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#2b542c),to(transparent));
+    background-image: linear-gradient(to bottom,#2b542c 0,transparent 100%);
+}
+
+/*Estilização de fundo do login*/
+.fundologin{
+    background: darkgreen;
+    background-image: url(../cardsets/cartas/clubs13.png), url(../cardsets/cartas/backfundo.png), url(../cardsets/cartas/hearts13.png);
+    background-repeat: no-repeat;
+    background-position: left top, center top, right top;
+    background-position-y: 50%, 50%, 50%;
+    background-size: 300px 420px, 300px 420px, 300px 420px;
+}
+
+/*Estilização das caixas de dialogo, cor verde para o fundo e texto centrado*/
+.dialogfundo{
+    background: #2b542c !important;
+    text-align: center;
+}
+
+/*Remove a cor branca padrão dos layouts*/
+#Layout{
+    background: transparent !important;
+}
+
+/*Estilização dedicada ao botão Lost Account da tela de login*/
+.lostaccount{
+    background-image: -webkit-linear-gradient(top,#f0ad4e 0,#eb9316 100%) !important;
+    background-image: -o-linear-gradient(top,#f0ad4e 0,#eb9316 100%) !important;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#f0ad4e),to(#eb9316)) !important;
+    background-image: linear-gradient(to bottom,#f0ad4e 0,#eb9316 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff0ad4e', endColorstr='#ffeb9316', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x !important;
+    border-color: #e38d13 !important;
+}
+
+/*Estilização dedicada aos botões de Login e Sign UP da tela de login*/
+.buttonslogin{
+    background-image: -webkit-linear-gradient(top,#5cb85c 0,#419641 100%) !important;
+    background-image: -o-linear-gradient(top,#5cb85c 0,#419641 100%) !important;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#5cb85c),to(#419641)) !important;
+    background-image: linear-gradient(to bottom,#5cb85c 0,#419641 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5cb85c', endColorstr='#ff419641', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x !important;
+    border-color: #3e8f3e !important;
+    margin-right: 10px;
+}
+
+.ui-dialog-footer{
+    text-align: right !important;
+}
+
+/*Estilização dedicada ao botão de Ajuda na tela de login*/
+.help{
+    background-image: -webkit-linear-gradient(top,#5cb85c 0,#419641 100%) !important;
+    background-image: -o-linear-gradient(top,#5cb85c 0,#419641 100%) !important;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#5cb85c),to(#419641)) !important;
+    background-image: linear-gradient(to bottom,#5cb85c 0,#419641 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5cb85c', endColorstr='#ff419641', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x !important;
+    border-color: #3e8f3e !important;
+    margin-right: 10px;
+}
+
+/*Espaçamento entre os botões da caixa de dialogo Novo Jogo*/
+.newgamebuttons{
+    margin-top: 25px;
+    margin-right: 10px;
+}
+
+/*Estilização adicional ao botão Sign Up*/
+.signup{
+    margin-right: 10px;
+}
+
+/*Tamanho personalizado dos layouts do jogo*/
+.grid{
+    min-height:880px;
+}
+
+/*Tamanho personalizado a barra lateral de recursos, automaticamente define o tamanho da tela de jogo em si*/
+.gridLeft{
+    min-width:300px;min-height:700px;
+}
+
+/*Tamanho personalizado do rodapé*/
+.gridFoot{
+    min-height: 100px;
+}
+
+/*Formatação especial a String 'Klondike'*/
+.foot{
+    font-family: Old English Text MT;
+    font-style: normal;
+    font-size: 4vw;
+    color: #c9302c !important;
+    text-shadow: 0 -1px 0 rgba(1,1,1,.60);
+}
+
+/*Formatação especial para a imagem das cartas pequenas no rodapé*/
+.footright{
+    position: absolute;
+    right: 10px;
+    text-align: right;
+}
+
+/*Remove a cor branca do conteúdo dos layouts, deixando os transparentes*/
+.ui-dialog, .ui-dialog-titlebar, .ui-dialog-title-dialog, .ui-dialog-titlebar-close, .ui-dialog-content, .ui-widget-content{
+    background-color: transparent;
+    color: #9d9d9d;
+    border: none;
+}
+
+/*Formatação dos cabeçalhos dos menus, dando uma coloração gradiente cinza*/
+.ui-layout-unit-header, .ui-widget-header{
+    background-image: -webkit-linear-gradient(top,#3c3c3c 0,#222 100%);
+    background-image: -o-linear-gradient(top,#3c3c3c 0,#222 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#3c3c3c),to(#222));
+    background-image: linear-gradient(to bottom,#3c3c3c 0,#222 100%);
+    border-color: #080808;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    color: #9d9d9d;
+}
+
+/*Estilização padrão dos botões, dando uma coloração gradiente azul com texto branco*/
+.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only{
+    background-image: -webkit-linear-gradient(top,#337ab7 0,#265a88 100%);
+    background-image: -o-linear-gradient(top,#337ab7 0,#265a88 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#337ab7),to(#265a88));
+    background-image: linear-gradient(to bottom,#337ab7 0,#265a88 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff265a88', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x;
+    border-color: #245580;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    color: #fff;
+}
+
+
+/*Estilização do cabeçalho da pagina, em gradiente cinza com preto*/
+.head{
+    background-image: -webkit-linear-gradient(top,#3c3c3c 0,#222 100%);
+    background-image: -o-linear-gradient(top,#3c3c3c 0,#222 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#3c3c3c),to(#222));
+    background-image: linear-gradient(to bottom,#3c3c3c 0,#222 100%);
+    border: 1px solid #080808;
+    border-radius: 5px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    padding: 32px 20px 20px 10px;
+    color: #9d9d9d !important;
+}
+
+/*Estilização dos botões do cabeçalho de página*/
+.logger{
+    position: absolute;
+    right: 10px;
+    text-align: right;
+    font-size: 16px;
+}
+
+/*Estilização do botão de logout*/
+.logout{
+    background-image: -webkit-linear-gradient(top,#c9302c 0,maroon 100%) !important;
+    background-image: -o-linear-gradient(top,#c9302c 0,maroon 100%) !important;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#c9302c),to(maroon)) !important;
+    background-image: linear-gradient(to bottom,#c9302c 0,maroon 100%) !important;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25) !important;
+    border: 1.2px solid #080808 !important;
+    color: #FFF !important;
+    margin-left: 10px !important;
+    
+}
+
+/*Formatação adicional do conteúdo dos diálogos de ajuda*/
+.ajuda{
+    text-align: left !important;
+}
+
+/*Cor de fundo e borda do menu de recursos do jogo*/
+.ui-menu{
+    background-image: -webkit-linear-gradient(top,#2b542c 0,darkgreen 100%);
+    background-image: -o-linear-gradient(top,#2b542c 0,darkgreen 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#2b542c),to(darkgreen));
+    background-image: linear-gradient(to bottom,#2b542c 0,darkgreen 100%);
+    border-radius: 10px;
+    border: 2px solid #73AD21;
+}
+
+/*Formatação do texto dos menus de recursos*/
+.ui-menuitem-text{
+    color:#c9302c;
+    text-shadow: 0 -1px 0 rgba(1,1,1,.20);
+}
+
+/*Estilização das caixas de seleção das opções do jogo*/
+input{
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+/*Estilização dos botões das opções do jogo*/
+select{
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.foottext{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+    font-weight: bold;
+    font-size: 1em;
+    padding: 20px 0px 0px 0px;
+    color: #9D9D9D;
+}
+
+/*Estilização do corpo do jogo*/
+div.workspace {
+    background-color: transparent;
+    color: #000;
+    cursor: default;
+    width: 850px;
+    border-radius: 10px;
+    border: 2px solid #73AD21;
+}
+
+/*Estilização de cada carta, tornando o fundo transparente, deixando apenas a imagem*/
+div.playingcard {
+    background-color: transparent;
+}
+
+/*Estilização dos lugares onde as cartas estão*/
+div.hotspot {
+    background-color: transparent;
+    border-radius: 10px;
+    border: 2px solid #73AD21;
+    color: transparent;
+}
+
+/*Estilização da tela de fundo das opções*/
+div.solitaireprefs, div.solitaireprefs form {
+    background-image: -webkit-linear-gradient(top,#2b542c 0,darkgreen 100%);
+    background-image: -o-linear-gradient(top,#2b542c 0,darkgreen 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#2b542c),to(darkgreen));
+    background-image: linear-gradient(to bottom,#2b542c 0,darkgreen 100%);
+    margin: 0px auto;
+    color: #c9302c;
+    text-shadow: 0 -1px 0 rgba(1,1,1,.20);
+    font: 700 21px 'Arial,sans-serif';
+}
+
+/*Estilização adicional da tela de fundo das opções*/
+div.solitaireprefs form {
+    padding: 0px 10px 10px;
+}
+
+/*Não usado, para os botões anteriormente existentes do jogo*/
+div.extrabuttons div {
+    background-color: transparent;
+}
